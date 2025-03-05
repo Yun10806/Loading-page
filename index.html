@@ -13,7 +13,15 @@
 <!--把按鈕置中-->
 <div style="text-align: center;">
     <button onclick="alert('The page is not crash')">Click me to check page still working!</button>
-<!--    新增一個等待秒數計時器-->
-    <p id="countdown" style="font-size: 20px;"></p>
+<!--新增一個等待秒數計時器並顯示等待秒數，不需要不斷新增一行，在原始那行更新秒數就好-->
+</div>
+<script>
+    let count = 0;
+    setInterval(() => {
+        count++;
+        document.querySelector('h1').innerText = `Please wait a moment for login... ${count} seconds`;
+    }, 1000);
+</script>
+
 </body>
 </html>
