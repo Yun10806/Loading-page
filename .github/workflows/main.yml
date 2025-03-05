@@ -1,1 +1,28 @@
 
+name: Deploy to GitHub Pages
+
+on:
+  push:
+    branches:
+      - main  # 當 main 分支有變動時觸發部署
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+      # 檢出代碼
+      - name: Checkout code
+        uses: actions/checkout@v2
+
+      # 安裝 GitHub Pages 部署工具
+      - name: Setup Pages
+        uses: actions/configure-pages@v2
+
+      # 部署到 GitHub Pages
+      - name: Deploy to GitHub Pages
+        uses: peaceiris/actions-gh-pages@v3
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}  # 使用 GitHub 自動生成的 token
+          publish_dir: ./  # 指定需要部署的目錄，通常是根目錄
+          destination_dir: /  # 設定部署的根目錄
